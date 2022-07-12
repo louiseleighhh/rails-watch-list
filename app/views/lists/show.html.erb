@@ -13,25 +13,22 @@
   <h1><%= @list.name %></h1>
   <% if @bookmarks.any?%>
   <div class = "d-flex justify-content-between">
-      <% @movies.each do |movie| %>
+      <% @bookmarks.each do |bookmark| %>
+      <% movie = Movie.find(bookmark.movie_id)%>
       <div class="card" style="width: 18rem">
         <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
-        <div class="card-body">
+        <div class="card-body">ß
           <h5 class="card-title"><%= movie.title %></h5>
           <p class="card-text"><%= movie.overview %></p>
           <p><%= movie.rating %> ⭐️</p>
           <h4>Comments:</h4>
-            <% movie.bookmarks.each do |bookmark| %>
-              <h5><%= bookmark.comment%></h5>
-            <% end %>
-          <%= link_to "Delete Bookmark", bookmark_path, method: :delete, class: "btn btn-outline-danger" %>
+            <p><%= bookmark.comment %></p>
+          <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
         </div>
         </div>
       <% end %>
-
       <% else %>
-        <h1>No Bookmarks in this garden yet, add some!</h1>
-
+      <h1> <%= "No Bookmarks in this garden yet, add some!"%></h1>
   </div>
   <% end %>
 </div>

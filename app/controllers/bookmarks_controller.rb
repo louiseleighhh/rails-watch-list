@@ -6,7 +6,7 @@ class BookmarksController < ApplicationController
 
   def create
     @bookmark = Bookmark.new(bookmark_params)
-    @movie = Movie.find(bookmark_params[:movie_id])
+    @movie = Movie.find(params[:bookmark][:movie_id])
     @list = List.find(params[:list_id])
 
     @bookmark.movie = @movie
@@ -20,13 +20,16 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:bookmark])
+    @list = List.find(params[:list_id])
+    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
+
+    redirect_to list_path(@list)
   end
 
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :movie_id)
+    params.require(:bookmark).permit(:comment, :movie)
   end
 end
