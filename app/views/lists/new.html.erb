@@ -1,0 +1,14 @@
+<div class = "container">
+  <div class="card mt-3 p-5">
+  <h1>Add a List</h1>
+  <%= simple_form_for @list do |f| %>
+    <div class="row">
+      <%= f.input :name %>
+    </div>
+    <div class="row">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <%= link_to "Go Back", lists_path, class: "link-primary mt-3" %>
+  </div>
+</div>

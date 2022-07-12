@@ -1,0 +1,15 @@
+<div class = "container">
+  <div class="card mt-3 p-5">
+  <h1>Add a Comment to your <%= @list.name %> list</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <div class="row">
+      <%= f.input :comment %>
+      <%= f.association :movie %>
+    </div>
+    <div class="row">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <%= link_to "Go Back", list_path(@list), class: "link-primary mt-3" %>
+  </div>
+</div>
