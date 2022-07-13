@@ -26,7 +26,7 @@
 
 
 
-<div class="container mt-2" style="display:flex">
+<div class="container mt-2">
  <div class = "cards-index">
   <% if @bookmarks.any?%>
       <% @bookmarks.each do |bookmark| %>
@@ -44,7 +44,8 @@
         </div>
       <% end %>
       <% else %>
-      <h1> <%= "No Bookmarks in this garden yet, add some!"%></h1>
+    </div>
+      <h1> <%= "No Bookmarks in this list yet, add some!"%></h1>
   <% end %>
-  </div>
+
 </div>
