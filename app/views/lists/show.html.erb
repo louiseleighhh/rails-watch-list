@@ -8,7 +8,7 @@
     </ul>
   </div>
 </nav>
-<% if list.photo.attached? %>
+<% if @list.photo.attached? %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>'); background-position: center;">
 <% else %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg'); background-position: center;">
