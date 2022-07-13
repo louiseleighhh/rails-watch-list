@@ -14,3 +14,5 @@ Turbolinks.start()
 ActiveStorage.start()
 
 console.log("tang mother")
+
+import "controllers"

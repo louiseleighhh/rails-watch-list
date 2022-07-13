@@ -1,9 +1,9 @@
 // Specific CSS for your home-page
-.main-container {
+.main-container-index {
   display: flex;
 }
 
-.cards {
+.cards-index {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
@@ -13,13 +13,13 @@
 
 
 @media(max-width: 992px) {
-  .cards {
+  .cards-index {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media(max-width: 768px) {
-  .cards {
+  .cards-index {
     grid-template-columns: 1fr;
   }
 }

@@ -1,4 +1,4 @@
-.card {
+.card-index {
   background-size: cover;
   background-position: center;
   height: 150px;
@@ -11,4 +11,9 @@
   color: white;
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+.card-index:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  text-shadow: 0 10px 20px rgba(0,0,0,0.7);
 }

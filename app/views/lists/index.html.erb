@@ -8,25 +8,25 @@
   </div>
 </nav>
 
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg);">
   <div class="container">
       <h1>Tired of looking for movies with the same atmosphere?</h1>
-      <p>Honestly, same. But, we'll compile it for you.</p>
+      <p><span data-controller="typed-js"></span></p>
       <%= link_to "Add a list", new_list_path, class: "btn btn-secondary btn-lg rounded-pill" %></a>
   </div>
 </div>
-<div class = "main-container">
 
-  <div class = "cards" style="align-items: center; justify-content: space-between">
+<div class = "main-container-index">
+  <div class = "cards-index" style="align-items: center; justify-content: space-between">
     <% @lists.each do |list| %>
       <% if list.photo.attached? %>
-      <%#= link_to "🗑", list_path(list), method: :delete %>
-      <a href="<%= list_path(list) %>" style="display: block; text-decoration: none">
-      <div class="card" style="background-image: url('<%= cl_image_path list.photo.key %>')">
-      <%= list.name %>
-      <%#= link_to list.name, list_path(list) %>
-      </div>
-      </a>
+        <%#= link_to "🗑", list_path(list), method: :delete %>
+        <a href="<%= list_path(list) %>" style="display: block; text-decoration: none">
+          <div class="card-index" style="background-image: url('<%= cl_image_path list.photo.key %>')">
+            <%= list.name %>
+            <%#= link_to list.name, list_path(list) %>
+          </div>
+        </a>
       <%#= link_to "🗑", list_path(list), method: :delete %>
       <% else %>
         <img src="https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg" alt="" class="card-img-top">
@@ -34,6 +34,7 @@
     <% end %>
   </div>
 </div>
+
 <footer class="footer">
       <div class="outer-footer">
         <h4>This website is made with resentment at LeWagon ♡</h4>

@@ -11,16 +11,24 @@
 </nav>
 <% if @list.photo.attached? %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>'); background-position: center;">
+    <div class="container">
+        <h1><%= @list.name %></h1>
+    </div>
+  </div>
 <% else %>
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg'); background-position: center;">
-<% end %>
-  <div class="container">
-      <h1><%= @list.name %></h1>
+    <div class="container">
+        <h1><%= @list.name %></h1>
+    </div>
   </div>
-</div>
-<div class="container">
+<% end %>
+
+
+
+
+<div class="container mt-2">
+ <div class = "cards" style="align-items: center; justify-content: space-between">
   <% if @bookmarks.any?%>
-  <div class = "d-flex justify-content-between">
       <% @bookmarks.each do |bookmark| %>
       <% movie = Movie.find(bookmark.movie_id)%>
       <div class="card" style="width: 18rem">
@@ -28,7 +36,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= movie.title %></h5>
           <p class="card-text"><%= movie.overview %></p>
-          <p><%= movie.rating %> ⭐️</p>
+          <p class="card-text"><%= movie.rating %> ⭐️</p>
           <h4>Comments:</h4>
             <p><%= bookmark.comment %></p>
           <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
@@ -37,6 +45,6 @@
       <% end %>
       <% else %>
       <h1> <%= "No Bookmarks in this garden yet, add some!"%></h1>
-  </div>
   <% end %>
+  </div>
 </div>
