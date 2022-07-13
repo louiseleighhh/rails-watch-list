@@ -17,7 +17,7 @@
   <div class = "fake-row" style="display: flex; align-items: center; justify-content: space-between">
     <% @lists.each do |list| %>
       <div class="card" style="width: 18rem; margin: 5px">
-      <% if list.photo.key.attached? %>
+      <% if list.photo.attached? %>
         <%= cl_image_tag list.photo.key, class: "card-img-top" %>
       <% else %>
         <img src="https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg" alt="" class="card-img-top">
