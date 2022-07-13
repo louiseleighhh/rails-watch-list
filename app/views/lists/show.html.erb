@@ -5,6 +5,7 @@
     <ul class="d-flex justify-content-between mb-0 ", style="list-style-type: none;">
       <li><%= link_to "Create a Bookmark", new_list_bookmark_path(@list), class: "btn btn-outline-primary", type: "button" %></li>
       <li><%= link_to "Back to list", lists_path, class: "btn btn-outline-primary", type: "button"%></li>
+      <li><%= link_to "Delete This List", list_path(@list), class: "btn btn-outline-danger", method: :delete %></li>
     </ul>
   </div>
 </nav>

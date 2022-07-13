@@ -20,12 +20,17 @@
   <div class = "cards" style="align-items: center; justify-content: space-between">
     <% @lists.each do |list| %>
       <% if list.photo.attached? %>
+      <%#= link_to "🗑", list_path(list), method: :delete %>
+      <a href="<%= list_path(list) %>" style="display: block; text-decoration: none">
       <div class="card" style="background-image: url('<%= cl_image_path list.photo.key %>')">
+      <%= list.name %>
+      <%#= link_to list.name, list_path(list) %>
+      </div>
+      </a>
+      <%#= link_to "🗑", list_path(list), method: :delete %>
       <% else %>
         <img src="https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg" alt="" class="card-img-top">
       <% end %>
-          <p><%= link_to list.name, list_path(list) %><%= link_to "🗑", list_path(list), method: :delete %></p>
-      </div>
     <% end %>
   </div>
 </div>
