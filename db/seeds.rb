@@ -16,6 +16,21 @@ Bookmark.create(comment: "Shinkshaw", movie_id: 1, list_id: 1)
 Bookmark.create(comment: "Na anod", movie_id: 2, list_id: 2)
 Bookmark.create(comment: "Female Spies", movie_id: 4, list_id: 3)
 
+require "open-uri"
+require "json"
+
+url = "https://tmdb.lewagon.com/movie/top_rated?api_key=%3Cyour_api_key%3E/"
+movies = JSON.parse(URI.open(url).read)
+results = movies["results"]
+results.each do |result|
+  Movie.create(
+  title: result["title"],
+  overview:result["overview"],
+  rating: result["vote_average"],
+  poster_url: "https://image.tmdb.org/t/p/w500#{result["poster_path"]}"
+)
+end
+
 List.create(name: "Drama")
 List.create(name: "All time favorites")
 List.create(name: "Girl Power")
