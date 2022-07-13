@@ -2,6 +2,9 @@
   <span class="navbar-brand mb-0 h1">WatchHobo</span>
   <div class="right-side">
     <%# <span><%= link_to "Add Flat", new_flat_path, class: "btn btn-outline-primary", type: "button" %>
+    <button type="button" class="btn btn-primary">
+  There are currently <span class="badge badge-light"><%=  @lists.count %></span> lists
+</button>
   </div>
 </nav>
 
@@ -12,22 +15,22 @@
       <%= link_to "Add a list", new_list_path, class: "btn btn-secondary btn-lg rounded-pill" %></a>
   </div>
 </div>
-<div class = "container">
-  <h1>My List (<%=  @lists.count %>)</h1>
-  <div class = "fake-row" style="display: flex; align-items: center; justify-content: space-between">
+<div class = "main-container">
+
+  <div class = "cards" style="align-items: center; justify-content: space-between">
     <% @lists.each do |list| %>
-      <div class="card" style="width: 18rem; margin: 5px">
       <% if list.photo.attached? %>
-        <%= cl_image_tag list.photo.key, class: "card-img-top" %>
+      <div class="card" style="background-image: url('<%= cl_image_path list.photo.key %>')">
       <% else %>
         <img src="https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg" alt="" class="card-img-top">
       <% end %>
-        <div class="card-header">
-          <span><h5 class="card-title"><%= link_to list.name, list_path(list) %></span>
-          <span><%= link_to "🗑", list_path(list), method: :delete %></h5></span>
-        </div>
+          <p><%= link_to list.name, list_path(list) %><%= link_to "🗑", list_path(list), method: :delete %></p>
       </div>
-
     <% end %>
   </div>
 </div>
+<footer class="footer">
+      <div class="outer-footer">
+        <h4>This website is made with resentment at LeWagon ♡</h4>
+      </div>
+</footer>
