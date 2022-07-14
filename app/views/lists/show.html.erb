@@ -13,6 +13,7 @@
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>'); background-position: center;">
     <div class="container">
         <h1><%= @list.name %></h1>
+        <div class="btn btn-outline-light btn-lg rounded-pill"> <%= @list.movies.count %> <%= @list.movies.count > 1 ? "movies" : "movie"%> in this list</div>
     </div>
   </div>
 <% else %>
@@ -23,29 +24,53 @@
   </div>
 <% end %>
 
-
-
-
-<div class="container mt-2">
+<div class="main-container-index mt-2">
  <div class = "cards-index">
   <% if @bookmarks.any?%>
       <% @bookmarks.each do |bookmark| %>
-      <% movie = Movie.find(bookmark.movie_id)%>
-      <div class="card" style="width: 18rem; justify-content: space-around; align-items: center; display: flex">
-        <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title"><%= movie.title %></h5>
-          <p class="card-text"><%= movie.overview %></p>
-          <p class="card-text"><%= movie.rating %> ⭐️</p>
-          <h4>Comments:</h4>
+        <% movie = Movie.find(bookmark.movie_id)%>
+        <div class="card" style="width: 18rem; justify-content: space-around; align-items: center; display: flex">
+          <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><%= movie.title %></h5>
+            <p class="card-text"><%= movie.overview %></p>
+            <p class="card-text"><%= movie.rating %> ⭐️</p>
+            <h4>Comments:</h4>
             <p><%= bookmark.comment %></p>
-          <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
-        </div>
+            <%= link_to "Delete Bookmark", list_bookmark_path(@list, bookmark), method: :delete, class: "btn btn-outline-danger", data: { confirm: "Are you sure?" } %>
+          </div>
         </div>
       <% end %>
-      <% else %>
-    </div>
+  <% else %>
       <h1> <%= "No Bookmarks in this list yet, add some!"%></h1>
   <% end %>
-
 </div>
+
+  <div class="card p-4" style="width: 20rem; display: flex">
+      <h6 style="font-weight: bold">Add a Review to your <%= @list.name %> List</h6>
+      <%= simple_form_for [@list, @review] do |f| %>
+          <%= f.input :content %>
+          <%= f.submit class: 'btn btn-primary' %>
+      <% end %>
+    <hr>
+      <h6 sty;e = "text-align: left">Reviews:</h6>
+      <% @list.reviews.each do |review| %>
+        <span class="navbar-brand mb-0 h1"><p><%= review.content %></p></span>
+        <div class="right-side"><%= link_to "🗑", review_path(review), method: :delete %></div>
+      <% end %>
+  </div>
+</div>
+
+<% if @list.photo.attached? %>
+<footer class="footer">
+      <div class="outer-footer-show" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key %>')">
+        <h4>This website is made with resentment at LeWagon ♡</h4>
+      </div>
+</footer>
+<% else %>
+<footer class="footer">
+      <div class="outer-footer-show" style="background-image: linear-gradient(to right, rgba(0,0,0,0.3),  rgba(0,0,0,0.3)), url('https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg')">
+        <h4>This website is made with resentment at LeWagon ♡</h4>
+      </div>
+</footer>
+<% end %>
