@@ -54,9 +54,13 @@
       <% end %>
     <hr>
       <h6 sty;e = "text-align: left">Reviews:</h6>
-      <% @list.reviews.each do |review| %>
-        <span class="navbar-brand mb-0 h1"><p><%= review.content %></p></span>
-        <div class="right-side"><%= link_to "🗑", review_path(review), method: :delete %></div>
+      <% if @list.reviews.any? %>
+        <% @list.reviews.each do |review| %>
+          <span class="navbar-brand mb-0 h1"><p><%= review.content %></p></span>
+          <div class="right-side"><%= link_to "🗑", review_path(review), method: :delete %></div>
+        <% end %>
+      <% else %>
+      <span class="navbar-brand mb-0 h1"><p>There are no reviews</p></span>
       <% end %>
   </div>
 </div>
