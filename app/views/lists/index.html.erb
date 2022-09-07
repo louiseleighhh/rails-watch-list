@@ -1,21 +1,11 @@
-<nav class="navbar navbar-light bg-light px-3">
-  <span class="navbar-brand mb-0 h1">WatchHobo</span>
-  <div class="right-side">
-    <%# <span><%= link_to "Add Flat", new_flat_path, class: "btn btn-outline-primary", type: "button" %>
-    <button type="button" class="btn btn-primary">
-      There are currently <span class="badge badge-light"><%=  @lists.count %></span> lists
-    </button>
-  </div>
-</nav>
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url(https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg);">
   <div class="container">
-      <h1>Tired of looking for movies with the same atmosphere?</h1>
-      <p><span data-controller="typed-js"></span></p>
-      <%= link_to "Add a list", new_list_path, class: "btn btn-outline-light btn-lg rounded-pill" %></a>
+    <h1>Tired of looking for movies with the same atmosphere?</h1>
+    <h2><span data-controller="typed-js"></span></h2>
+    <h3 class="mt-2" style="display: inline;"> There are currently <span class="badge badge-light"><%=  @lists.count %></span> lists</h3>
+    <%= link_to "Add a list", new_list_path, class: "btn btn-outline-light btn-lg rounded-pill", style: "margin-left: 20px" %>
   </div>
 </div>
-
 <div class = "main-container-index">
   <div class = "cards-index" style="align-items: center; justify-content: space-between">
     <% @lists.each do |list| %>
@@ -27,20 +17,14 @@
             <%#= link_to list.name, list_path(list) %>
           </div>
         </a>
-      <%#= link_to "🗑", list_path(list), method: :delete %>
+        <%#= link_to "🗑", list_path(list), method: :delete %>
       <% else %>
-      <a href="<%= list_path(list) %>" style="display: block; text-decoration: none">
-      <div class="card-index" style="background-image: url('https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg')">
-        <%= list.name %>
-      </div>
-      </a>
+        <a href="<%= list_path(list) %>" style="display: block; text-decoration: none">
+          <div class="card-index" style="background-image: url('https://images.hdqwalls.com/wallpapers/final-fantasy-xv-artwork-h5.jpg')">
+            <%= list.name %>
+          </div>
+        </a>
       <% end %>
     <% end %>
   </div>
 </div>
-
-<footer class="footer">
-      <div class="outer-footer">
-        <h4>This website is made with resentment at LeWagon ♡</h4>
-      </div>
-</footer>

@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @bookmarks = @list.bookmarks
     @review.list = @list
     if @review.save
       redirect_to list_path(@list)
